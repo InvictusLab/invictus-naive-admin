@@ -8,6 +8,7 @@ import App from '@/App.vue'
 import SvgIcon from '@/components/SvgIcon/SvgIndex.vue'
 import pinia from '@/stores'
 import router from '@/router'
+import '@/assets/main.css'
 
 const app = createApp(App)
 
