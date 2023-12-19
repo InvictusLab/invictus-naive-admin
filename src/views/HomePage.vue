@@ -1,7 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+</script>
 
 <template>
-  <h1>登录页面</h1>
+  <svg-icon name="logo" width="100px" height="100px"></svg-icon>
+  <h1>主页</h1>
 </template>
 
 <style scoped></style>

@@ -8,6 +8,7 @@ import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import Inspect from 'vite-plugin-inspect'
 
@@ -33,8 +34,8 @@ export default defineConfig({
         ElementPlusResolver(),
         // Auto import icon components
         IconsResolver({
-          prefix: 'Icon',
-        }),
+          prefix: 'Icon'
+        })
       ],
       dts: path.resolve(dtsPath, 'auto-imports.d.ts')
     }),
@@ -43,18 +44,25 @@ export default defineConfig({
       resolvers: [
         // Auto register icon components
         IconsResolver({
-          enabledCollections: ['ep'],
+          enabledCollections: ['ep']
         }),
         // Auto register Element Plus components
         ElementPlusResolver()
       ],
-      dts: path.resolve(dtsPath, 'components.d.ts'),
+      dts: path.resolve(dtsPath, 'components.d.ts')
     }),
 
     Icons({
-      autoInstall: true,
+      autoInstall: true
     }),
 
-    Inspect(),
-  ],
+    createSvgIconsPlugin({
+      // Set the icon folder that needs to be cached
+      iconDirs: [path.resolve(srcPath, 'assets/icons/svg')],
+      // Specify symbolId format
+      symbolId: 'icon-[dir]-[name]'
+    }),
+
+    Inspect()
+  ]
 })
