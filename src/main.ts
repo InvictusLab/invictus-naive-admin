@@ -10,6 +10,11 @@ import pinia from '@/stores'
 import router from '@/router'
 import '@/assets/main.css'
 
+if (import.meta.env.DEV) {
+  const env = import.meta.env
+  console.log('envs:', env)
+}
+
 const app = createApp(App)
 
 app.use(pinia)

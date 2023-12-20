@@ -17,6 +17,12 @@ const dtsPath = path.resolve(srcPath, 'dts')
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  // Set up multiple environment configuration folders
+  // dev: 开发环境，sit: 集成测试环境，uat: 用户测试环境，pre: 预发布环境，prod: 生产环境
+  // Prioritization（优先级排序）：.env.[mode].local > .env.[mode] > .env.local > .env
+  envDir: path.resolve(__dirname, './env'),
+
+  // Set alias
   resolve: {
     alias: {
       '@': srcPath
