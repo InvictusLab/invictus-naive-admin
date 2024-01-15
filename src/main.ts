@@ -21,6 +21,7 @@ app.use(router)
 
 app.component('svg-icon', SvgIcon)
 
+// Setting the CSS style of naive-ui has a higher priority than the reset style of tailwind.
 const meta = document.createElement('meta')
 meta.name = 'naive-ui-style'
 document.head.appendChild(meta)
