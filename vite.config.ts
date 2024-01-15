@@ -9,7 +9,7 @@ import IconsResolver from 'unplugin-icons/resolver'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import UnoCSS from 'unocss/vite'
 import Inspect from 'vite-plugin-inspect'
 
 const srcPath = fileURLToPath(new URL('./src', import.meta.url))
@@ -31,7 +31,10 @@ export default defineConfig({
 
   plugins: [
     vue(),
+
     vueJsx(),
+
+    UnoCSS(),
 
     AutoImport({
       // Auto import functions from Vue, e.g. ref, reactive, toRef...
@@ -41,9 +44,11 @@ export default defineConfig({
         '@vueuse/core',
         'vue-i18n',
         'pinia',
+        {
+          'naive-ui': ['useDialog', 'useMessage', 'useNotification', 'useLoadingBar']
+        }
       ],
       resolvers: [
-        ElementPlusResolver(),
         // Auto import icon components
         IconsResolver({
           prefix: 'Icon'
@@ -62,8 +67,6 @@ export default defineConfig({
         IconsResolver({
           enabledCollections: ['ep']
         }),
-        // Auto register Element Plus components
-        ElementPlusResolver()
       ],
       dirs: [
         'src/components',
