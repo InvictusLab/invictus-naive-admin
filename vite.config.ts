@@ -35,13 +35,23 @@ export default defineConfig({
 
     AutoImport({
       // Auto import functions from Vue, e.g. ref, reactive, toRef...
-      imports: ['vue'],
+      imports: [
+        'vue',
+        'vue-router',
+        '@vueuse/core',
+        'vue-i18n',
+        'pinia',
+      ],
       resolvers: [
         ElementPlusResolver(),
         // Auto import icon components
         IconsResolver({
           prefix: 'Icon'
         })
+      ],
+      dirs: [
+        'src/stores',
+        'src/composables',
       ],
       dts: path.resolve(dtsPath, 'auto-imports.d.ts')
     }),
@@ -54,6 +64,9 @@ export default defineConfig({
         }),
         // Auto register Element Plus components
         ElementPlusResolver()
+      ],
+      dirs: [
+        'src/components',
       ],
       dts: path.resolve(dtsPath, 'components.d.ts')
     }),
