@@ -11,6 +11,7 @@ import Components from 'unplugin-vue-components/vite'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import UnoCSS from 'unocss/vite'
 import Inspect from 'vite-plugin-inspect'
+import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 
 const srcPath = fileURLToPath(new URL('./src', import.meta.url))
 const dtsPath = path.resolve(srcPath, 'dts')
@@ -63,6 +64,7 @@ export default defineConfig({
 
     Components({
       resolvers: [
+        NaiveUiResolver(),
         // Auto register icon components
         IconsResolver({
           enabledCollections: ['ep']

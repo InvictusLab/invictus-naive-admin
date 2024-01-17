@@ -14,15 +14,14 @@ if (import.meta.env.DEV) {
   console.log('envs:', env)
 }
 
-const app = createApp(App)
-
-app.component('svg-icon', SvgIcon)
-
 // Setting the CSS style of naive-ui has a higher priority than the reset style of tailwind.
 const meta = document.createElement('meta')
 meta.name = 'naive-ui-style'
 document.head.appendChild(meta)
 
+const app = createApp(App)
+
+app.component('svg-icon', SvgIcon)
 app.use(pinia)
 app.use(router)
 
