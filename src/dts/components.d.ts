@@ -7,9 +7,16 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    AppProvider: (typeof import('./../components/AppProvider/AppProvider.vue'))['default']
     NButton: (typeof import('naive-ui'))['NButton']
+    NConfigProvider: (typeof import('naive-ui'))['NConfigProvider']
+    NDialogProvider: (typeof import('naive-ui'))['NDialogProvider']
+    NLoadingBarProvider: (typeof import('naive-ui'))['NLoadingBarProvider']
+    NMessageProvider: (typeof import('naive-ui'))['NMessageProvider']
+    NNotificationProvider: (typeof import('naive-ui'))['NNotificationProvider']
+    NSpace: (typeof import('naive-ui'))['NSpace']
     RouterLink: (typeof import('vue-router'))['RouterLink']
     RouterView: (typeof import('vue-router'))['RouterView']
-    SvgIndex: (typeof import('./../components/SvgIcon/SvgIndex.vue'))['default']
+    SvgIcon: (typeof import('./../components/SvgIcon/SvgIcon.vue'))['default']
   }
 }

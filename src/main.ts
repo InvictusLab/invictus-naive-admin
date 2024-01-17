@@ -4,7 +4,7 @@ import 'virtual:uno.css'
 import 'virtual:svg-icons-register'
 
 import App from '@/App.vue'
-import SvgIcon from '@/components/SvgIcon/SvgIndex.vue'
+import SvgIcon from '@/components/SvgIcon/SvgIcon.vue'
 import pinia from '@/stores'
 import router from '@/router'
 import '@/assets/main.css'
