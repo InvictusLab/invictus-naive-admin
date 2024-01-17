@@ -1,19 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import NProgress from '@/config/nprogress'
 
-import HomePage from '@/views/HomePage.vue'
+import staticRoutes from '@/router/static-routes'
 
 // 创建路由实例
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    {
-      path: '/',
-      name: 'Home',
-      meta: { title: '首页' },
-      component: HomePage
-    }
-  ]
+  history: createWebHistory(import.meta.env.VITE_APP_BASE_URL ?? '//'),
+  routes: [...staticRoutes]
 })
 
 // 路由拦截守卫
