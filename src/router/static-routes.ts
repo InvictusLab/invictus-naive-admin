@@ -10,9 +10,9 @@ const StaticRoutes: RouteRecordRaw[] = [
     }
   },
   {
-    path: '/system',
+    path: '/app',
     name: 'System',
-    component: () => import('@/views/system/SystemIndex.vue')
+    component: () => import('@/views/app/AppIndex.vue')
   }
 ]
 
