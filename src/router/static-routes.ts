@@ -1,18 +1,23 @@
 import type { RouteRecordRaw } from 'vue-router'
 
+import { Layout } from '@/views/layouts'
+
 const StaticRoutes: RouteRecordRaw[] = [
   {
     path: '/',
-    name: 'Home',
-    component: () => import('@/views/HomePage.vue'),
-    meta: {
-      title: 'Home'
-    }
-  },
-  {
-    path: '/app',
-    name: 'System',
-    component: () => import('@/views/app/AppIndex.vue')
+    name: 'index',
+    component: Layout,
+    redirect: '/home',
+    children: [
+      {
+        path: '/home',
+        name: 'home',
+        component: () => import('@/views/HomePage.vue'),
+        meta: {
+          title: 'Home'
+        }
+      }
+    ]
   }
 ]
 

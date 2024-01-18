@@ -1,7 +1,10 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div>system</div>
+  <h1>Base Layout</h1>
+  <div>
+    <RouterView></RouterView>
+  </div>
 </template>
 
 <style scoped></style>
