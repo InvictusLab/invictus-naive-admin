@@ -56,7 +56,7 @@ export default defineConfig({
         })
       ],
       dirs: [
-        'src/stores',
+        'src/stores/*',
         'src/composables',
       ],
       dts: path.resolve(dtsPath, 'auto-imports.d.ts')

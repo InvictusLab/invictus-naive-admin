@@ -1,10 +1,14 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import MixLayoutIndex from '@/views/layouts/mix-layout/MixLayoutIndex.vue'
+
+const appStore = useAppStore()
+const { layout } = storeToRefs(appStore)
+</script>
 
 <template>
-  <h1>Base Layout</h1>
-  <div>
+  <MixLayoutIndex v-if="layout.layout == 'mix'">
     <RouterView></RouterView>
-  </div>
+  </MixLayoutIndex>
 </template>
 
 <style scoped></style>
