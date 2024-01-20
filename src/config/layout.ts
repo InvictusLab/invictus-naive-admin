@@ -5,11 +5,17 @@ export interface Layout {
   title?: string
   layout: 'mix' | 'side' | 'top'
   headerHeight?: number
+  siderWidth?: number
+  siderCollapsedWidth?: number
+  showSiderTrigger?: boolean | 'bar' | 'arrow-circle'
 }
 
 export const layoutConfig: Layout = {
   logo: logo,
   title: 'Invictus Admin',
   layout: 'mix',
-  headerHeight: 48
+  headerHeight: 48,
+  siderWidth: 240,
+  siderCollapsedWidth: 48,
+  showSiderTrigger: 'bar'
 }

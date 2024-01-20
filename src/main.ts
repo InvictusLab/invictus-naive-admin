@@ -7,7 +7,7 @@ import App from '@/App.vue'
 import SvgIcon from '@/components/SvgIcon/SvgIcon.vue'
 import pinia from '@/stores'
 import router from '@/router'
-import '@/assets/main.css'
+import '@/assets/styles/app.css'
 
 if (import.meta.env.DEV) {
   const env = import.meta.env
