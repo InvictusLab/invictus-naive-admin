@@ -35,7 +35,8 @@ const dynamicContentHeight = computed(() => `calc(100vh - ${props.headerHeight}p
           :collapsed-width="siderCollapsedWidth"
           :show-trigger="showSiderTrigger"
           content-style="padding: 24px;"
-        ></LayoutSider>
+        >
+        </LayoutSider>
         <LayoutContent content-style="padding: 24px;">
           <slot></slot>
         </LayoutContent>

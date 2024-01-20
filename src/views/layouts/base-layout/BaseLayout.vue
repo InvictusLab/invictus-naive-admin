@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import MixLayoutIndex from '@/views/layouts/mix-layout/MixLayout.vue'
+import MixLayout from '@/views/layouts/mix-layout/MixLayout.vue'
+import SideLayout from '@/views/layouts/side-layout/SideLayout.vue'
 
 const appStore = useAppStore()
 const { layout } = storeToRefs(appStore)
 </script>
 
 <template>
-  <MixLayoutIndex
+  <MixLayout
     v-if="layout.layout == 'mix'"
     :logo="layout.logo"
     :title="layout.title"
@@ -18,7 +19,20 @@ const { layout } = storeToRefs(appStore)
       <div>Right Slot</div>
     </template>
     <RouterView></RouterView>
-  </MixLayoutIndex>
+  </MixLayout>
+  <SideLayout
+    v-if="layout.layout == 'side'"
+    :logo="layout.logo"
+    :title="layout.title"
+    :show-sider-trigger="layout.showSiderTrigger"
+    :sider-width="layout.siderWidth"
+    :sider-collapsed-width="layout.siderCollapsedWidth"
+  >
+    <!--    <template #headerRight>-->
+    <!--      <div>Right Slot</div>-->
+    <!--    </template>-->
+    <RouterView></RouterView>
+  </SideLayout>
 </template>
 
 <style scoped></style>
