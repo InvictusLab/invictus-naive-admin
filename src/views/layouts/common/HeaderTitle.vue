@@ -7,7 +7,7 @@ const titleStyle = computed<CSSProperties>(() => ({ fontSize: `${props.size}px` 
 </script>
 
 <template>
-  <span v-if="title" class="ml-2" :style="titleStyle">
+  <span v-if="title" class="ml-2 truncate" :style="titleStyle">
     {{ title }}
   </span>
 </template>

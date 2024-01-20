@@ -9,9 +9,11 @@ const props = withDefaults(
     siderWidth?: number
     siderCollapsedWidth?: number
     showSiderTrigger?: boolean | 'bar' | 'arrow-circle'
+    collapsed?: boolean
   }>(),
-  { headerHeight: 48 }
+  { headerHeight: 48, collapsed: false }
 )
+defineEmits(['update:collapsed'])
 const dynamicHeaderHeight = computed(() => `${props.headerHeight}px`)
 const dynamicContentHeight = computed(() => `calc(100vh - ${props.headerHeight}px)`)
 </script>
@@ -31,10 +33,11 @@ const dynamicContentHeight = computed(() => `calc(100vh - ${props.headerHeight}p
       </n-layout-header>
       <n-layout has-sider class="invictus-mix-layout-content">
         <LayoutSider
+          :collapsed="collapsed"
           :width="siderWidth"
           :collapsed-width="siderCollapsedWidth"
           :show-trigger="showSiderTrigger"
-          content-style="padding: 24px;"
+          @update:collapsed="($event: any) => $emit('update:collapsed', $event)"
         >
         </LayoutSider>
         <LayoutContent content-style="padding: 24px;">

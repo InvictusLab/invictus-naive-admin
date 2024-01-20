@@ -8,14 +8,16 @@ export interface Layout {
   siderWidth?: number
   siderCollapsedWidth?: number
   showSiderTrigger?: boolean | 'bar' | 'arrow-circle'
+  collapsed: boolean
 }
 
 export const layoutConfig: Layout = {
   logo: logo,
   title: 'Invictus Admin',
-  layout: 'side',
+  layout: 'mix',
   headerHeight: 48,
   siderWidth: 240,
   siderCollapsedWidth: 48,
-  showSiderTrigger: 'bar'
+  showSiderTrigger: 'bar',
+  collapsed: false
 }
