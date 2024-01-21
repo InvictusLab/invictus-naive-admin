@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { HeaderLogo, HeaderTitle, LayoutContent, LayoutSider } from '@/views/layouts/common'
+import { HeaderLogo, HeaderTitle, LayoutCommon, LayoutContent, LayoutSider } from '@/views/layouts/common'
 
 const props = withDefaults(
   defineProps<{
@@ -33,7 +33,7 @@ const dynamicHeaderHeight = computed(() => `${props.headerHeight}px`)
         <HeaderTitle v-if="!collapsed" :title="title" size="22"></HeaderTitle>
       </div>
     </LayoutSider>
-    <n-layout style="--n-color: var(--invictus-layout-content-bg)">
+    <LayoutCommon>
       <n-layout-header class="invictus-mix-layout-header flex justify-between items-center px-4">
         <slot name="headerLeft">
           <div></div>
@@ -46,7 +46,7 @@ const dynamicHeaderHeight = computed(() => `${props.headerHeight}px`)
         <slot></slot>
       </LayoutContent>
       <!--      <n-layout-footer>成府路</n-layout-footer>-->
-    </n-layout>
+    </LayoutCommon>
   </n-layout>
 </template>
 

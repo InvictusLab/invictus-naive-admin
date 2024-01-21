@@ -14,7 +14,7 @@ export interface Layout {
 export const layoutConfig: Layout = {
   logo: logo,
   title: 'Invictus Admin',
-  layout: 'mix',
+  layout: 'side',
   headerHeight: 48,
   siderWidth: 240,
   siderCollapsedWidth: 48,

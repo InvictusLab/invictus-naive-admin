@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import MixLayout from '@/views/layouts/mix-layout/MixLayout.vue'
 import SideLayout from '@/views/layouts/side-layout/SideLayout.vue'
+import TopLayout from '@/views/layouts/top-layout/TopLayout.vue'
 
 const appStore = useAppStore()
 const { layout } = storeToRefs(appStore)
@@ -35,6 +36,12 @@ const { layout } = storeToRefs(appStore)
     </template>
     <RouterView></RouterView>
   </SideLayout>
+  <TopLayout v-if="layout.layout == 'top'" :logo="layout.logo" :title="layout.title">
+    <template #headerRight>
+      <div>Right Slot</div>
+    </template>
+    <RouterView></RouterView>
+  </TopLayout>
 </template>
 
 <style scoped></style>
