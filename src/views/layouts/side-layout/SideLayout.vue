@@ -1,5 +1,11 @@
 <script setup lang="ts">
-import { HeaderLogo, HeaderTitle, LayoutCommon, LayoutContent, LayoutSider } from '@/views/layouts/common'
+import {
+  HeaderLogo,
+  HeaderTitle,
+  LayoutCommon,
+  LayoutContent,
+  LayoutSider
+} from '@/views/layouts/common'
 
 const props = withDefaults(
   defineProps<{
