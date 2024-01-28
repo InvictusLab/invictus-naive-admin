@@ -4,6 +4,7 @@ import SideLayout from '@/views/layouts/side-layout/SideLayout.vue'
 import TopLayout from '@/views/layouts/top-layout/TopLayout.vue'
 import MobileLayout from '@/views/layouts/mobile-layout/MobileLayout.vue'
 import { useQueryBreakpoints } from '@/composables/breakpoints'
+import LayoutSetting from '@/views/layouts/layout-setting/LayoutSetting.vue'
 
 const appStore = useAppStore()
 const { layout, visible } = storeToRefs(appStore)
@@ -59,6 +60,7 @@ watchEffect(() => {
       <RouterView></RouterView>
     </TopLayout>
   </template>
+  <LayoutSetting></LayoutSetting>
 </template>
 
 <style scoped></style>
