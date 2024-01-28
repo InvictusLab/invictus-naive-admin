@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import { SettingOutlined, CloseOutlined } from '@vicons/antd'
 
-const props = withDefaults(defineProps<{
-  floatTop?: number | string
-  drawerWidth?: number | string
-}>(), {
-  floatTop: 240,
-  drawerWidth: 300
-})
+const props = withDefaults(
+  defineProps<{
+    floatTop?: number | string
+    drawerWidth?: number | string
+  }>(),
+  {
+    floatTop: 240,
+    drawerWidth: 300
+  }
+)
 
 const show = ref(false)
 
@@ -41,10 +44,11 @@ const cssVars = computed(() => {
     </div>
   </teleport>
   <n-drawer :width="drawerWidth" v-model:show="show">
-    <n-drawer-content>
-      这里是内容区域
-    </n-drawer-content>
-    <div class="absolute top-[var(--invictus-float-top)] right-[var(--invictus-drawer-width)]" :style="cssVars">
+    <n-drawer-content> 这里是内容区域 </n-drawer-content>
+    <div
+      class="absolute top-[var(--invictus-float-top)] right-[var(--invictus-drawer-width)]"
+      :style="cssVars"
+    >
       <n-button
         size="large"
         type="primary"
@@ -61,6 +65,4 @@ const cssVars = computed(() => {
   </n-drawer>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
