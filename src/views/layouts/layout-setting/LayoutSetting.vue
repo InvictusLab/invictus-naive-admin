@@ -1,10 +1,14 @@
 <script setup lang="ts">
 import { SettingOutlined, CloseOutlined } from '@vicons/antd'
 
+import SwitchLayout from '@/views/layouts/layout-setting/SwitchLayout.vue'
+import DrawerContainer from '@/views/layouts/layout-setting/DrawerContainer.vue'
+
 const props = withDefaults(
   defineProps<{
     floatTop?: number | string
     drawerWidth?: number | string
+    layout?: 'mix' | 'side' | 'top'
   }>(),
   {
     floatTop: 240,
@@ -12,7 +16,21 @@ const props = withDefaults(
   }
 )
 
+defineEmits(['update:layout'])
+
 const show = ref(false)
+
+const layouts = ref([{
+  key: 'side',
+  title: '侧边布局'
+}, {
+  key: 'top',
+  title: '顶部布局'
+}, {
+  key: 'mix',
+  title: '混合布局'
+}])
+
 
 const handleClick = (val: boolean) => {
   show.value = val
@@ -44,7 +62,21 @@ const cssVars = computed(() => {
     </div>
   </teleport>
   <n-drawer :width="drawerWidth" v-model:show="show">
-    <n-drawer-content> 这里是内容区域 </n-drawer-content>
+    <n-drawer-content>
+      <DrawerContainer title="导航模式">
+        <n-space size="large">
+          <template v-for="item in layouts" :key="item.key">
+            <SwitchLayout
+              :layout="item.key"
+              :title="item.title"
+              :selected="item.key === layout"
+              @click="() => $emit('update:layout', item.key)"
+            >
+            </SwitchLayout>
+          </template>
+        </n-space>
+      </DrawerContainer>
+    </n-drawer-content>
     <div
       class="absolute top-[var(--invictus-float-top)] right-[var(--invictus-drawer-width)]"
       :style="cssVars"

@@ -60,7 +60,7 @@ watchEffect(() => {
       <RouterView></RouterView>
     </TopLayout>
   </template>
-  <LayoutSetting></LayoutSetting>
+  <LayoutSetting v-model:layout="layout.layout"></LayoutSetting>
 </template>
 
 <style scoped></style>
