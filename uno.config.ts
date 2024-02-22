@@ -30,5 +30,12 @@ export default defineConfig({
   transformers: [
     transformerVariantGroup(),
     transformerDirectives()
+  ],
+  safelist: [
+    'bg-[var(--inverted-color)]',
+    'bg-[var(--base-color)]',
+    'h-75%',
+    'h-100%',
+    'bottom-0'
   ]
 })
