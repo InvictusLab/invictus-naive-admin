@@ -31,6 +31,6 @@ export const useAppStore = defineStore('app', () => {
     layoutTheme,
     toggleVisible,
     toggleCollapsed,
-    updateLayoutStyle,
+    updateLayoutStyle
   }
 })

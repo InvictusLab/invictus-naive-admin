@@ -1,6 +1,8 @@
 <script setup lang="ts">
 const appStore = useAppStore()
-const {layoutTheme} = storeToRefs(appStore)
+const { layoutTheme } = storeToRefs(appStore)
+
+useAutoDark()
 </script>
 
 <template>
