@@ -1,9 +1,10 @@
 import logo from '@/assets/icons/svg/logo.svg'
 
-export interface Layout {
+export interface LayoutTheme {
   logo?: string
   title?: string
   layout: 'mix' | 'side' | 'top'
+  layoutStyle: 'inverted' | 'light' | 'dark'
   headerHeight?: number
   siderWidth?: number
   siderCollapsedWidth?: number
@@ -11,10 +12,11 @@ export interface Layout {
   collapsed: boolean
 }
 
-export const layoutConfig: Layout = {
+export const layoutThemeConfig: LayoutTheme = {
   logo: logo,
   title: 'Invictus Admin',
   layout: 'mix',
+  layoutStyle: 'light',
   headerHeight: 48,
   siderWidth: 240,
   siderCollapsedWidth: 48,

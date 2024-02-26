@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { RouterView } from 'vue-router'
+const appStore = useAppStore()
+const {layoutTheme} = storeToRefs(appStore)
 </script>
 
 <template>
-  <n-config-provider>
+  <n-config-provider :theme="layoutTheme">
     <app-provider>
       <RouterView />
     </app-provider>

@@ -1,14 +1,23 @@
 <script setup lang="ts">
-import SwitchLayout from '@/views/layouts/layout-setting/SwitchLayout.vue'
+import type {LayoutTheme} from '@/config/layoutTheme'
+
+const appStore = useAppStore()
+
+const onSwitch = (theme: LayoutTheme['layoutStyle']) => {
+  if (theme === 'dark') {
+    document.documentElement.className = 'dark'
+  } else {
+    document.documentElement.removeAttribute('class')
+  }
+  appStore.updateLayoutStyle(theme)
+}
 </script>
 
 <template>
   <div>
     <n-space>
-      <SwitchLayout layout="mix" selected></SwitchLayout>
-      <SwitchLayout layout="top"></SwitchLayout>
-      <SwitchLayout layout="side"></SwitchLayout>
-      <SwitchLayout layout="side" inverted></SwitchLayout>
+      <n-button @click="onSwitch('light')">浅色</n-button>
+      <n-button @click="onSwitch('dark')">深色</n-button>
     </n-space>
   </div>
 </template>
