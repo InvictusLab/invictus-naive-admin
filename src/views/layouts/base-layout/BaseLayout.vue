@@ -7,7 +7,7 @@ import { useQueryBreakpoints } from '@/composables/breakpoints'
 import LayoutSetting from '@/views/layouts/layout-setting/LayoutSetting.vue'
 
 const appStore = useAppStore()
-const { layout, visible, layoutList, layoutStyleList } = storeToRefs(appStore)
+const { layout, visible, layoutList, layoutStyleList, themeList } = storeToRefs(appStore)
 const { isMobile, isPad, isDesktop } = useQueryBreakpoints()
 
 watchEffect(() => {
@@ -69,7 +69,9 @@ watchEffect(() => {
   <LayoutSetting
     v-model:layout-style="layout.layoutStyle"
     v-model:layout="layout.layout"
+    v-model:theme="layout.theme"
     :layout-list="layoutList"
+    :theme-list="themeList"
     :layout-style-list="layoutStyleList"
   >
   </LayoutSetting>

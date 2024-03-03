@@ -1,23 +1,19 @@
 <script setup lang="ts">
-import type { LayoutTheme } from '@/config/layoutTheme'
+import { colors } from '@/config/invictusTheme'
 
 const appStore = useAppStore()
 
-const onSwitch = (theme: LayoutTheme['layoutStyle']) => {
-  if (theme === 'dark') {
-    document.documentElement.className = 'dark'
-  } else {
-    document.documentElement.removeAttribute('class')
-  }
-  appStore.updateLayoutStyle(theme)
+const onSwitch = (theme: string) => {
+  appStore.updateTheme(theme)
 }
 </script>
 
 <template>
   <div>
     <n-space>
-      <n-button @click="onSwitch('light')">浅色</n-button>
-      <n-button @click="onSwitch('dark')">深色</n-button>
+      <n-button type="primary" v-for="(value, key) in colors" :key="key" @click="onSwitch(key)">
+        {{ key }}
+      </n-button>
     </n-space>
   </div>
 </template>

@@ -2,6 +2,8 @@ import { defineStore } from 'pinia'
 import type { LayoutTheme, LayoutType } from '@/config/layoutTheme'
 import { layoutThemeConfig } from '@/config/layoutTheme'
 import { darkTheme } from '@/config/appTheme'
+import { colors, darkColors } from '@/config/invictusTheme'
+import type { ThemeType } from '@/config/invictusTheme'
 
 export const useAppStore = defineStore('app', () => {
   const defaultLayout = import.meta.env.DEV ? layoutThemeConfig : useLayout()
@@ -94,15 +96,43 @@ export const useAppStore = defineStore('app', () => {
     return undefined
   })
 
+  const overridesTheme = computed(() => {
+    if (isDark.value) {
+      return darkColors[layout.theme ?? 'default']
+    } else {
+      return colors[layout.theme ?? 'default']
+    }
+  })
+
+  const updateTheme = (value: string) => {
+    layout.theme = value
+  }
+
+  const themeList = computed<ThemeType[]>(() => {
+    const list: ThemeType[] = []
+    const myColors = isDark.value ? darkColors : colors
+    for (const colorsKey in myColors) {
+      const value = myColors[colorsKey]
+      list.push({
+        color: value.common?.primaryColor as string,
+        key: colorsKey
+      })
+    }
+    return list
+  })
+
   return {
     layout,
     visible,
     layoutList,
     layoutStyleList,
     layoutTheme,
+    overridesTheme,
+    themeList,
     toggleVisible,
     toggleCollapsed,
     updateLayout,
-    updateLayoutStyle
+    updateLayoutStyle,
+    updateTheme
   }
 })

@@ -3,7 +3,9 @@ import { SettingOutlined, CloseOutlined } from '@vicons/antd'
 
 import SwitchLayout from '@/views/layouts/layout-setting/SwitchLayout.vue'
 import DrawerContainer from '@/views/layouts/layout-setting/DrawerContainer.vue'
+import SwitchTheme from '@/views/layouts/layout-setting/SwitchTheme.vue'
 import type { LayoutType } from '@/config/layoutTheme'
+import type { ThemeType } from '@/config/invictusTheme'
 
 const props = withDefaults(
   defineProps<{
@@ -13,6 +15,8 @@ const props = withDefaults(
     layoutStyle?: 'inverted' | 'light' | 'dark'
     layoutList?: LayoutType[]
     layoutStyleList?: LayoutType[]
+    themeList?: ThemeType[]
+    theme?: string
   }>(),
   {
     floatTop: 240,
@@ -20,7 +24,7 @@ const props = withDefaults(
   }
 )
 
-defineEmits(['update:layout', 'update:layoutStyle'])
+const emit = defineEmits(['update:layout', 'update:layoutStyle', 'update:theme'])
 
 const show = ref(false)
 
@@ -34,6 +38,10 @@ const cssVars = computed(() => {
     '--invictus-drawer-width': `${props.drawerWidth}px`
   }
 })
+
+const onChangeTheme = (value: string) => {
+  emit('update:theme', value)
+}
 </script>
 
 <template>
@@ -70,6 +78,21 @@ const cssVars = computed(() => {
           </template>
         </n-space>
       </DrawerContainer>
+
+      <DrawerContainer title="主题色配置" v-if="themeList">
+        <n-space>
+          <SwitchTheme
+            v-for="item in themeList"
+            :color="item.color"
+            :checked="item.key === theme"
+            :key="item.key"
+            @click="onChangeTheme(item.key)"
+          >
+          </SwitchTheme>
+        </n-space>
+      </DrawerContainer>
+
+      <n-divider></n-divider>
 
       <DrawerContainer title="导航模式" v-if="layoutList">
         <n-space size="large">
