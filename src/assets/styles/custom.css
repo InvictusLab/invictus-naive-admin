@@ -1,0 +1,7 @@
+.invictus-layout-header {
+  box-shadow: var(--invictus-layout-shadow-header);
+}
+
+.invictus-layout-sider {
+  box-shadow: var(--invictus-layout-shadow-sider);
+}

@@ -4,7 +4,8 @@ import {
   HeaderTitle,
   LayoutCommon,
   LayoutContent,
-  LayoutSider
+  LayoutSider,
+  LayoutHeader
 } from '@/views/layouts/common'
 
 const props = withDefaults(
@@ -40,14 +41,14 @@ const dynamicHeaderHeight = computed(() => `${props.headerHeight}px`)
       </div>
     </LayoutSider>
     <LayoutCommon>
-      <n-layout-header class="invictus-mix-layout-header flex justify-between items-center px-4">
+      <LayoutHeader class="invictus-mix-layout-header flex justify-between items-center px-4">
         <slot name="headerLeft">
           <div></div>
         </slot>
         <slot name="headerRight">
           <div></div>
         </slot>
-      </n-layout-header>
+      </LayoutHeader>
       <LayoutContent content-style="padding: 24px;">
         <slot></slot>
       </LayoutContent>

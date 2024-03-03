@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import type { LayoutTheme, LayoutType } from '@/config/layoutTheme'
-import { darkTheme } from 'naive-ui'
 import { layoutThemeConfig } from '@/config/layoutTheme'
+import { darkTheme } from '@/config/appTheme'
 
 export const useAppStore = defineStore('app', () => {
   const defaultLayout = import.meta.env.DEV ? layoutThemeConfig : useLayout()
@@ -44,6 +44,17 @@ export const useAppStore = defineStore('app', () => {
     ]
   })
 
+  watch(
+    () => layout.layoutStyle,
+    (value) => {
+      if (value === 'dark') {
+        toggleDark(true)
+      } else {
+        toggleDark(false)
+      }
+    }
+  )
+
   const layoutStyleList = computed<LayoutType[]>(() => {
     const list: LayoutType[] = [
       {
@@ -65,6 +76,13 @@ export const useAppStore = defineStore('app', () => {
         updateLayoutStyle('light')
       }
     }
+
+    list.push({
+      id: 'dark',
+      key: 'side',
+      title: '暗色风格',
+      dark: true
+    })
 
     return list
   })

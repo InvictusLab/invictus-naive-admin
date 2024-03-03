@@ -7,6 +7,7 @@ const props = withDefaults(
     layout?: 'mix' | 'side' | 'top'
     inverted?: boolean
     selected?: boolean
+    dark?: boolean
     title?: string | (() => VNodeChild)
   }>(),
   {
@@ -17,7 +18,7 @@ const props = withDefaults(
 )
 
 const headerClass = computed(() => {
-  if (props.layout === 'mix' || props.layout === 'top') {
+  if (props.layout === 'mix' || props.layout === 'top' || props.dark) {
     return ['bg-[var(--inverted-color)]']
   } else if (props.layout === 'side') {
     return ['bg-[var(--base-color)]']
@@ -30,7 +31,7 @@ const siderClass = computed(() => {
   if (props.layout === 'mix') {
     return ['bg-[var(--base-color)]', 'h-75%', 'bottom-0']
   } else if (props.layout === 'side') {
-    return ['h-100%', `bg-[var(--${props.inverted ? 'inverted' : 'base'}-color)]`]
+    return ['h-100%', `bg-[var(--${props.inverted || props.dark ? 'inverted' : 'base'}-color)]`]
   } else {
     return []
   }

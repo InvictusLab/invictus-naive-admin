@@ -1,5 +1,11 @@
 <script setup lang="ts">
-import { HeaderLogo, HeaderTitle, LayoutCommon, LayoutContent } from '@/views/layouts/common'
+import {
+  HeaderLogo,
+  HeaderTitle,
+  LayoutCommon,
+  LayoutContent,
+  LayoutHeader
+} from '@/views/layouts/common'
 
 const props = withDefaults(
   defineProps<{
@@ -15,7 +21,7 @@ const dynamicHeaderHeight = computed(() => `${props.headerHeight}px`)
 
 <template>
   <LayoutCommon class="h-screen">
-    <n-layout-header
+    <LayoutHeader
       :inverted="inverted"
       class="invictus-mix-layout-header flex justify-between items-center px-4"
     >
@@ -24,7 +30,7 @@ const dynamicHeaderHeight = computed(() => `${props.headerHeight}px`)
         <HeaderTitle :title="title"></HeaderTitle>
       </div>
       <slot name="headerRight"></slot>
-    </n-layout-header>
+    </LayoutHeader>
     <LayoutContent content-style="padding: 24px;">
       <slot></slot>
     </LayoutContent>

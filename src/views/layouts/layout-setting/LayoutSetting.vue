@@ -63,6 +63,7 @@ const cssVars = computed(() => {
               :title="item.title"
               :inverted="item.inverted"
               :selected="item.id === layoutStyle"
+              :dark="item.dark"
               @click="() => $emit('update:layoutStyle', item.id)"
             >
             </SwitchLayout>

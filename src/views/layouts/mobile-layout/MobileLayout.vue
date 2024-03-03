@@ -1,5 +1,11 @@
 <script setup lang="ts">
-import { HeaderLogo, HeaderTitle, LayoutCommon, LayoutContent } from '@/views/layouts/common'
+import {
+  HeaderLogo,
+  HeaderTitle,
+  LayoutCommon,
+  LayoutContent,
+  LayoutHeader
+} from '@/views/layouts/common'
 import { MenuUnfoldOutlined } from '@vicons/antd'
 
 const props = withDefaults(
@@ -31,7 +37,7 @@ const onShow = () => {
 
 <template>
   <LayoutCommon class="h-screen">
-    <n-layout-header
+    <LayoutHeader
       :inverted="headerInverted"
       class="invictus-mix-layout-header flex justify-between items-center px-4"
     >
@@ -42,7 +48,7 @@ const onShow = () => {
         </n-icon>
       </div>
       <slot name="headerRight"></slot>
-    </n-layout-header>
+    </LayoutHeader>
     <LayoutContent content-style="padding: 24px;">
       <slot></slot>
     </LayoutContent>
