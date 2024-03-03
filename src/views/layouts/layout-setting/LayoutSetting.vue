@@ -3,12 +3,16 @@ import { SettingOutlined, CloseOutlined } from '@vicons/antd'
 
 import SwitchLayout from '@/views/layouts/layout-setting/SwitchLayout.vue'
 import DrawerContainer from '@/views/layouts/layout-setting/DrawerContainer.vue'
+import type { LayoutType } from '@/config/layoutTheme'
 
 const props = withDefaults(
   defineProps<{
     floatTop?: number | string
     drawerWidth?: number | string
     layout?: 'mix' | 'side' | 'top'
+    layoutStyle?: 'inverted' | 'light' | 'dark'
+    layoutList?: LayoutType[]
+    layoutStyleList?: LayoutType[]
   }>(),
   {
     floatTop: 240,
@@ -16,21 +20,9 @@ const props = withDefaults(
   }
 )
 
-defineEmits(['update:layout'])
+defineEmits(['update:layout', 'update:layoutStyle'])
 
 const show = ref(false)
-
-const layouts = ref([{
-  key: 'side',
-  title: '侧边布局'
-}, {
-  key: 'top',
-  title: '顶部布局'
-}, {
-  key: 'mix',
-  title: '混合布局'
-}])
-
 
 const handleClick = (val: boolean) => {
   show.value = val
@@ -63,9 +55,24 @@ const cssVars = computed(() => {
   </teleport>
   <n-drawer :width="drawerWidth" v-model:show="show">
     <n-drawer-content>
-      <DrawerContainer title="导航模式">
+      <DrawerContainer title="布局风格配置" v-if="layoutStyleList">
         <n-space size="large">
-          <template v-for="item in layouts" :key="item.key">
+          <template v-for="item in layoutStyleList" :key="item.id">
+            <SwitchLayout
+              :layout="item.key"
+              :title="item.title"
+              :inverted="item.inverted"
+              :selected="item.id === layoutStyle"
+              @click="() => $emit('update:layoutStyle', item.id)"
+            >
+            </SwitchLayout>
+          </template>
+        </n-space>
+      </DrawerContainer>
+
+      <DrawerContainer title="导航模式" v-if="layoutList">
+        <n-space size="large">
+          <template v-for="item in layoutList" :key="item.key">
             <SwitchLayout
               :layout="item.key"
               :title="item.title"

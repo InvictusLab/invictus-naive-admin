@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type {LayoutTheme} from '@/config/layoutTheme'
+import type { LayoutTheme } from '@/config/layoutTheme'
 
 const appStore = useAppStore()
 

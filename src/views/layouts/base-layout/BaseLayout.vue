@@ -7,7 +7,7 @@ import { useQueryBreakpoints } from '@/composables/breakpoints'
 import LayoutSetting from '@/views/layouts/layout-setting/LayoutSetting.vue'
 
 const appStore = useAppStore()
-const { layout, visible } = storeToRefs(appStore)
+const { layout, visible, layoutList, layoutStyleList } = storeToRefs(appStore)
 const { isMobile, isPad, isDesktop } = useQueryBreakpoints()
 
 watchEffect(() => {
@@ -44,6 +44,7 @@ watchEffect(() => {
       v-model:collapsed="layout.collapsed"
       :logo="layout.logo"
       :title="layout.title"
+      :inverted="layout.layoutStyle === 'inverted'"
       :show-sider-trigger="layout.showSiderTrigger"
       :sider-width="layout.siderWidth"
       :sider-collapsed-width="layout.siderCollapsedWidth"
@@ -53,14 +54,25 @@ watchEffect(() => {
       </template>
       <RouterView></RouterView>
     </SideLayout>
-    <TopLayout v-if="layout.layout == 'top'" :logo="layout.logo" :title="layout.title">
+    <TopLayout
+      v-if="layout.layout == 'top'"
+      :logo="layout.logo"
+      :title="layout.title"
+      :inverted="layout.layoutStyle === 'inverted'"
+    >
       <template #headerRight>
         <div>Right Slot</div>
       </template>
       <RouterView></RouterView>
     </TopLayout>
   </template>
-  <LayoutSetting v-model:layout="layout.layout"></LayoutSetting>
+  <LayoutSetting
+    v-model:layout-style="layout.layoutStyle"
+    v-model:layout="layout.layout"
+    :layout-list="layoutList"
+    :layout-style-list="layoutStyleList"
+  >
+  </LayoutSetting>
 </template>
 
 <style scoped></style>

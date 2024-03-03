@@ -1,5 +1,12 @@
 import logo from '@/assets/icons/svg/logo.svg'
 
+export interface LayoutType {
+  id: string
+  key: 'mix' | 'side' | 'top'
+  title: string
+  inverted?: boolean
+}
+
 export interface LayoutTheme {
   logo?: string
   title?: string
