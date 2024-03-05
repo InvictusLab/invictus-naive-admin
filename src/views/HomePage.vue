@@ -1,19 +1,17 @@
-<script setup lang="ts">
-import { colors } from '@/config/invictusTheme'
+<script lang="ts" setup>
+const appLocale = useAppLocale()
 
-const appStore = useAppStore()
-
-const onSwitch = (theme: string) => {
-  appStore.updateTheme(theme)
+const onSwitch = (lang: string) => {
+  appLocale.value = lang
 }
 </script>
 
 <template>
   <div>
     <n-space>
-      <n-button type="primary" v-for="(value, key) in colors" :key="key" @click="onSwitch(key)">
-        {{ key }}
-      </n-button>
+      <n-input />
+      <n-button @click="onSwitch('en-US')"> English </n-button>
+      <n-button @click="onSwitch('zh-CN')"> 中文 </n-button>
     </n-space>
   </div>
 </template>

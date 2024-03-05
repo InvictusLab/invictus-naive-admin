@@ -7,6 +7,7 @@ import App from '@/App.vue'
 import SvgIcon from '@/components/SvgIcon/SvgIcon.vue'
 import pinia from '@/stores'
 import router from '@/router'
+import i18n from '@/locales'
 import '@/assets/styles/app.css'
 
 if (import.meta.env.DEV) {
@@ -23,6 +24,7 @@ const app = createApp(App)
 
 app.component('svg-icon', SvgIcon)
 app.use(pinia)
+app.use(i18n)
 app.use(router)
 
 app.mount('#app')
