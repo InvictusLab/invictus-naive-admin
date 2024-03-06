@@ -63,12 +63,12 @@ const onChangeTheme = (value: string) => {
   </teleport>
   <n-drawer :width="drawerWidth" v-model:show="show">
     <n-drawer-content>
-      <DrawerContainer title="布局风格配置" v-if="layoutStyleList">
+      <DrawerContainer :title="$t('global.layout.setting.drawer.style')" v-if="layoutStyleList">
         <n-space size="large">
           <template v-for="item in layoutStyleList" :key="item.id">
             <SwitchLayout
               :layout="item.key"
-              :title="item.title"
+              :title="$t(item.title)"
               :inverted="item.inverted"
               :selected="item.id === layoutStyle"
               :dark="item.dark"
@@ -79,11 +79,12 @@ const onChangeTheme = (value: string) => {
         </n-space>
       </DrawerContainer>
 
-      <DrawerContainer title="主题色配置" v-if="themeList">
+      <DrawerContainer :title="$t('global.layout.setting.drawer.theme')" v-if="themeList">
         <n-space>
           <SwitchTheme
             v-for="item in themeList"
             :color="item.color"
+            :title="$t(item.title)"
             :checked="item.key === theme"
             :key="item.key"
             @click="onChangeTheme(item.key)"
@@ -94,12 +95,12 @@ const onChangeTheme = (value: string) => {
 
       <n-divider></n-divider>
 
-      <DrawerContainer title="导航模式" v-if="layoutList">
+      <DrawerContainer :title="$t('global.layout.setting.drawer.layout')" v-if="layoutList">
         <n-space size="large">
           <template v-for="item in layoutList" :key="item.key">
             <SwitchLayout
               :layout="item.key"
-              :title="item.title"
+              :title="$t(item.title)"
               :selected="item.key === layout"
               @click="() => $emit('update:layout', item.key)"
             >

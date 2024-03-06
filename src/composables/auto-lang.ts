@@ -1,4 +1,4 @@
-import i18n, { defaultLocale, loadLanguageAsync } from '@/locales'
+import { defaultLocale, loadLanguageAsync } from '@/locales'
 import type { RemovableRef } from '@vueuse/core'
 
 export const useAppLocale: () => RemovableRef<string> = createGlobalState(() =>
@@ -7,31 +7,39 @@ export const useAppLocale: () => RemovableRef<string> = createGlobalState(() =>
 
 export const useAutoLang = () => {
   const appLocale = useAppLocale()
-  const { isSupported, language } = useNavigatorLanguage()
+
+  const { locale, getLocaleMessage } = useI18n()
+
   const setLanguage = async (lang: string) => {
     try {
       await loadLanguageAsync(lang)
       appLocale.value = lang
+      locale.value = lang
     } catch (e) {
       throw new Error(`Failed to load language: ${lang}`)
     }
   }
-  if (isSupported.value) {
-    if (language.value !== defaultLocale) setLanguage(language.value!).then(() => {})
 
-    watch(language, () => {
-      setLanguage(language.value!).then(() => {})
+  const { isSupported, language } = useNavigatorLanguage()
+
+  if (isSupported.value) {
+    if (language.value && language.value !== defaultLocale)
+      setLanguage(language.value).then(() => {})
+
+    watch(language, (lang) => {
+      if (lang) setLanguage(lang).then(() => {})
     })
-  } else {
-    if (appLocale.value !== defaultLocale) setLanguage(appLocale.value).then(() => {})
   }
-  watch(appLocale, () => {
-    if (appLocale.value !== i18n.global.locale.value) setLanguage(appLocale.value).then(() => {})
+
+  watch(appLocale, (lang) => {
+    if (lang && lang !== locale.value) setLanguage(lang).then(() => {})
   })
-  const targetLocale = computed(() => i18n.global.getLocaleMessage(appLocale.value).naiveUI || {})
+
+  setLanguage(appLocale.value).then(() => {})
+
+  const naiveLocale = computed(() => getLocaleMessage(appLocale.value).naiveUI || {})
 
   return {
-    targetLocale,
-    setLanguage
+    naiveLocale
   }
 }

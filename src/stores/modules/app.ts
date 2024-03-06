@@ -31,17 +31,17 @@ export const useAppStore = defineStore('app', () => {
       {
         id: 'side',
         key: 'side',
-        title: '侧边布局'
+        title: 'global.layout.setting.drawer.layout.side'
       },
       {
         id: 'top',
         key: 'top',
-        title: '顶部布局'
+        title: 'global.layout.setting.drawer.layout.mix'
       },
       {
         id: 'mix',
         key: 'mix',
-        title: '混合布局'
+        title: 'global.layout.setting.drawer.layout.top'
       }
     ]
   })
@@ -62,7 +62,7 @@ export const useAppStore = defineStore('app', () => {
       {
         id: 'light',
         key: 'side',
-        title: '亮色风格'
+        title: 'global.layout.setting.drawer.style.light'
       }
     ]
 
@@ -71,7 +71,7 @@ export const useAppStore = defineStore('app', () => {
         id: 'inverted',
         key: 'side',
         inverted: true,
-        title: '反转色风格'
+        title: 'global.layout.setting.drawer.style.inverted'
       })
     } else {
       if (layout.layoutStyle !== 'dark') {
@@ -82,7 +82,7 @@ export const useAppStore = defineStore('app', () => {
     list.push({
       id: 'dark',
       key: 'side',
-      title: '暗色风格',
+      title: 'global.layout.setting.drawer.style.dark',
       dark: true
     })
 
@@ -115,7 +115,8 @@ export const useAppStore = defineStore('app', () => {
       const value = myColors[colorsKey]
       list.push({
         color: value.common?.primaryColor as string,
-        key: colorsKey
+        key: colorsKey,
+        title: `global.layout.setting.drawer.theme.${colorsKey}`
       })
     }
     return list

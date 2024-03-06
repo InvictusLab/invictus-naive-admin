@@ -10,8 +10,8 @@ const onSwitch = (lang: string) => {
   <div>
     <n-space>
       <n-input />
-      <n-button @click="onSwitch('en-US')"> English </n-button>
       <n-button @click="onSwitch('zh-CN')"> 中文 </n-button>
+      <n-button @click="onSwitch('en-US')"> English </n-button>
     </n-space>
   </div>
 </template>
