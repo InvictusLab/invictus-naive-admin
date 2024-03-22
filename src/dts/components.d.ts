@@ -8,6 +8,8 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     AppProvider: typeof import('./../components/AppProvider/AppProvider.vue')['default']
+    AppProviderIndex: typeof import('../components/AppProvider/AppProvider.vue')['default']
+    NaiveProvider: typeof import('./../components/AppProvider/naiveProvider.vue')['default']
     NButton: typeof import('naive-ui')['NButton']
     NConfigProvider: typeof import('naive-ui')['NConfigProvider']
     NDialogProvider: typeof import('naive-ui')['NDialogProvider']

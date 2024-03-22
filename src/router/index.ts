@@ -1,11 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import staticRoutes from '@/router/static-routes'
+import staticRoutes from '@/router/staticRoutes'
 
 // 创建路由实例
 const router = createRouter({
   history: createWebHistory(import.meta.env.VITE_APP_BASE_URL ?? '//'),
-  routes: [...staticRoutes]
+  routes: [
+    ...staticRoutes,
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('@/views/login/LoginIndex.vue')
+    }
+  ]
 })
 
 // 路由拦截守卫

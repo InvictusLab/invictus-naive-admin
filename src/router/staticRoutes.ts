@@ -12,7 +12,7 @@ const StaticRoutes: RouteRecordRaw[] = [
       {
         path: '/home',
         name: 'home',
-        component: () => import('@/views/HomePage.vue'),
+        component: () => import('@/views/HomeIndex.vue'),
         meta: {
           title: 'Home'
         }
