@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { SettingOutlined, CloseOutlined } from '@vicons/antd'
 
-import SwitchLayout from '@/views/layouts/layout-setting/SwitchLayout.vue'
-import DrawerContainer from '@/views/layouts/layout-setting/DrawerContainer.vue'
-import SwitchTheme from '@/views/layouts/layout-setting/SwitchTheme.vue'
+import SwitchLayout from '@/views/layouts/layoutSetting/SwitchLayout.vue'
+import DrawerContainer from '@/views/layouts/layoutSetting/DrawerContainer.vue'
+import SwitchTheme from '@/views/layouts/layoutSetting/SwitchTheme.vue'
 import type { LayoutType } from '@/config/layoutTheme'
 import type { ThemeType } from '@/config/invictusTheme'
 

@@ -5,8 +5,6 @@ const onSwitch = (lang: string) => {
   appLocale.value = lang
 }
 
-import request from '@/utils/request'
-
 const onGet = async () => {
   const res = await useGet(
     'https://mock.lingyu.org.cn/mock/642b5d1e939061307ed09d1b/example/test/200'
